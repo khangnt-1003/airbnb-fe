@@ -1,0 +1,34 @@
+.profile-menu-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.25rem;
+  color: var(--font-grey);
+  border: 1px solid var(--grey);
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+
+.menu-items {
+  padding: 0.5rem 1rem !important;
+  font-size: 0.8rem;
+  color: var(--font-grey);
+}
+
+@media only screen and (max-width: 800px) {
+  .search-bar,
+  .airbnb-your-home {
+    display: none;
+  }
+
+  .navbar {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .profile-menu-flex {
+    position: fixed;
+    top: 0.5rem;
+    right: 1.5rem;
+  }
+}

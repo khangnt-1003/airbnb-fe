@@ -1,0 +1,198 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  padding: 1rem 1rem;
+  background-color: white;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  height: 2rem;
+}
+
+.small-search-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 250ms cubic-bezier(0.2, 0, 0, 1), visibility 0ms 0ms;
+  // transform: translate(-50%, 0%);
+  transform-origin: 50% 0%;
+}
+
+.small-search-bar:hover {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 15%), 0 4px 12px rgb(0 0 0 / 10%);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.large-search-bar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  // margin-top: 4rem;
+  border: 1px solid #ddd;
+  border-radius: 2rem;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+  width: 70%;
+  height: 4rem;
+  margin-bottom: 1rem;
+  padding-right: 0.8rem;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 250ms cubic-bezier(0.2, 0, 0, 1), visibility 0ms 125ms;
+  transform: scaleY(0.34, 0.73) translateY(-50%);
+  transform-origin: 50% 50%;
+}
+
+.large-search-bar:hover {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 15%), 0 4px 12px rgb(0 0 0 / 10%);
+  transition: all 0.2s;
+}
+
+.large-search-bar-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  align-content: center;
+  // height: 100%;
+  border-right: 1px solid #ddd;
+  padding-left: 0.5rem;
+}
+
+.large-search-bar-text:hover {
+  background-color: #ddd;
+  border-radius: 2rem;
+  transition: all 0.1s;
+  height: 100%;
+}
+
+.small-search-bar-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-right: 1px solid #ddd;
+  padding-right: 0.5rem;
+}
+
+.small-search-bar-text2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #717171;
+  padding-right: 0.5rem;
+}
+
+.experience-text {
+  font-size: 1rem;
+  font-weight: 600;
+  padding-right: 0.5rem;
+  cursor: pointer;
+}
+
+.experience-text2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #717171;
+  padding-right: 0.5rem;
+  border-radius: 2rem;
+  padding: 0.9rem;
+  cursor: pointer;
+}
+
+.experience-text2:hover {
+  background-color: #f7f7f7;
+}
+
+.search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff385c;
+  padding: 0.25rem;
+  border-radius: 50%;
+  color: white;
+}
+
+.large-search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff385c;
+  padding: 0.4rem;
+  border-radius: 50%;
+  color: white;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.experience-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 250ms cubic-bezier(0.2, 0, 0, 1), visibility 0ms 125ms;
+  transform: scaleY(0.34, 0.73) translateY(-50%);
+  transform-origin: 50% 50%;
+}
+
+.airbnb-your-home {
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.airbnb-your-home:hover {
+  background-color: #f7f7f7;
+}
+
+.profile-div:hover {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 15%), 0 4px 12px rgb(0 0 0 / 10%);
+  transition: all 0.3s;
+  cursor: pointer;
+  border-radius: 2rem;
+}
+
+.show-item {
+  visibility: hidden;
+  display: none;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 250ms cubic-bezier(0.2, 0, 0, 1), visibility 0ms 125ms;
+  transform: scaleY(0.34, 0.727272) translateY(0);
+  transform-origin: 50% 50%;
+}
+
+.hide-item {
+  left: 50%;
+  visibility: visible;
+  transform: translate(-50%, -50%);
+  transform-origin: 50% 0%;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 250ms cubic-bezier(0.2, 0, 0, 1), visibility 0ms 125ms;
+  top: 50px;
+}
+
+.secondary-text {
+  color: var(--font-grey);
+  margin: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .search-bar,
+  .airbnb-your-home {
+    display: none;
+  }
+
+  .navbar {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
