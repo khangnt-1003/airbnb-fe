@@ -4,25 +4,25 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import { useNavigate } from 'react-router-dom';
+import { useModal } from '../../../LoginPage/components/LoginFormModal';
 import './styles.scss';
 
 function ProfileMenu() {
   const [menuAnchor, setMenuAnchor] = React.useState(null);
   const open = Boolean(menuAnchor);
-  const navigate = useNavigate();
+  const { setModal } = useModal()
   const handleOnClick = (event) => {
     setMenuAnchor(event.currentTarget);
   };
-  // const handleCloseMenu = () => {
-  //   setMenuAnchor(null);
-  // };
-  const handleCloseMenu = (event) => {
-    if (event.target.innerText === 'Login') {
-      navigate('/login');
-    }
+  const handleCloseMenu = () => {
     setMenuAnchor(null);
   };
+  // const handleCloseMenu = (event) => {
+  //   if (event.target.innerText === 'Login') {
+  //     navigate('/login');
+  //   }
+  //   setMenuAnchor(null);
+  // };
 
   return (
     <div>
@@ -56,7 +56,10 @@ function ProfileMenu() {
         <MenuItem className='menu-items' onClick={handleCloseMenu}>
           Signup
         </MenuItem>
-        <MenuItem onClick={handleCloseMenu} className='menu-items'>
+        <MenuItem onClick={() => {
+          handleCloseMenu();
+          setModal(<div></div>)
+        }} className='menu-items'>
           Login
         </MenuItem>
         <div

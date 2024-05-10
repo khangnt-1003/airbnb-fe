@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import Reacts from 'react';
 import { links } from '../../../../assets/images';
 import PropTypes from 'prop-types';
 import './styles.scss';
