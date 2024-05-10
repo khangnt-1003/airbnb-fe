@@ -7,26 +7,26 @@
   padding: 1rem 1rem;
   justify-content: flex-start;
   flex-direction: column;
+  align-self: center;
+  margin-top: 3rem;
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-}
+// div {
+//   display: flex;
+//   flex-direction: column;
+// }
 
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 1px solid var(--grey);
+  margin-top: -2.5rem;
 }
 
 .close-icon {
-  margin-bottom: -2.5rem;
+  cursor: pointer;
+  z-index: 999;
 }
 
 .header-text {
@@ -64,6 +64,7 @@
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  cursor: pointer;
   border-bottom: none;
 }
 
@@ -88,6 +89,7 @@ input[type="text"] {
   border-radius: 5px;
   font-weight: bold;
   color: white;
+  cursor: pointer;
 }
 
 .button-container {
@@ -97,6 +99,8 @@ input[type="text"] {
   align-items: center;
   border: 1px solid black;
   border-radius: 5px;
+  cursor: pointer;
+  flex-direction: row;
 }
 
 .icon {
@@ -113,7 +117,10 @@ input[type="text"] {
 .line-with-text {
   position: relative;
   text-align: center;
+  flex-direction: row;
   margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .line-with-text::before {

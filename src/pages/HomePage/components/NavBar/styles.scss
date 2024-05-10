@@ -1,7 +1,14 @@
+#root {
+  max-width: 2280px;
+  margin: 0 auto;
+  padding: 1rem 0rem;
+  text-align: center;
+}
+
 .navbar {
   display: flex;
   align-items: center;
-  padding: 1rem 1rem;
+  padding: 1rem 3rem;
   background-color: white;
   z-index: 1000;
 }

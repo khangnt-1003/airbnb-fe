@@ -32,7 +32,7 @@ function NavBar() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div className='navbar'>
-        <div style={{ width: '25%', justifyContent: 'flex-start' }}>
+        <div style={{ width: '25%', display: 'flex', justifyContent: 'flex-start' }}>
           <img src={logo} alt='logo' className='navbar-logo' />
         </div>
 

@@ -7,11 +7,12 @@
   height: 270px;
   width: 270px;
   overflow: hidden;
+  border-radius: 0.5rem;
 }
 
 .card-img {
-  height: 270px;
-  width: 270px;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
   border-radius: 0.5rem;
 }

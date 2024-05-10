@@ -17,7 +17,7 @@ function Card({ card }) {
         loop={true}
         mousewheel={true}
         cssMode={true}
-        pagination
+        pagination={true}
         modules={[Pagination, Navigation]}
         className="swiper-container"
       >
