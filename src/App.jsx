@@ -4,6 +4,9 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
 function App() {
+  // Modal.show({
+    
+  // })
   return (
     <BrowserRouter>
       <Routes>
