@@ -3,6 +3,7 @@ import NavBar from './components/NavBar';
 import CategoryBar from './components/CategoryBar';
 import CardList from './components/CardList';
 import { list, list2 } from '../../assets/cards';
+import LoginForm from '../LoginPage/components/LoginForm';
 
 function HomePage() {
   const [selectedFilter, setSelectedFilter] = useState(0);
