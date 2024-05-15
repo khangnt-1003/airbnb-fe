@@ -1,29 +1,49 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
-import { useModal } from '../../../LoginPage/components/LoginFormModal';
 import './styles.scss';
-import { Modal } from '@mui/material';
+import LoginForm from '../../../LoginPage/components/LoginForm';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import LoginFormModal from './../../../LoginPage/components/LoginFormModal/index';
+import { useModal } from '../../../LoginPage/components/LoginFormModal/ModalContext';
 
 function ProfileMenu() {
+  const { data } = useQuery({
+    queryKey: ['list'],
+    queryFn: async () => {
+      const data = queryClient.getQueryData(['list']);
+      return data
+        ? data
+        : await axios
+            .get('http://localhost:3000/stays', {
+              headers: {
+                //tokem o day
+              },
+            })
+            .then((res) => {
+              console.log(res);
+              return res.data;
+            })
+            .catch((err) => {
+              console.log(err);
+
+              throw err;
+            });
+    },
+  });
+  const {showModal, closeModal} = useModal();
   const [menuAnchor, setMenuAnchor] = React.useState(null);
+  const queryClient = useQueryClient();
+  queryClient.getQueryData;
   const open = Boolean(menuAnchor);
-  const { setModal } = useModal()
   const handleOnClick = (event) => {
     setMenuAnchor(event.currentTarget);
   };
   const handleCloseMenu = () => {
     setMenuAnchor(null);
   };
-  // const handleCloseMenu = (event) => {
-  //   if (event.target.innerText === 'Login') {
-  //     navigate('/login');
-  //   }
-  //   setMenuAnchor(null);
-  // };
 
   return (
     <div>
@@ -54,13 +74,23 @@ function ProfileMenu() {
           },
         }}
       >
-        <MenuItem className='menu-items' onClick={handleCloseMenu}>
+        <MenuItem
+          className='menu-items'
+          onClick={() => {
+            handleCloseMenu();
+            LoginForm.show();
+          }}
+        >
           Signup
         </MenuItem>
-        <MenuItem onClick={() => {
-          handleCloseMenu();
-          setModal(<div></div>)
-        }} className='menu-items'>
+        <MenuItem
+          onClick={() => {
+            handleCloseMenu();
+            // LoginForm.show();
+            showModal(<LoginFormModal onClose={closeModal} />);
+          }}
+          className='menu-items'
+        >
           Login
         </MenuItem>
         <div

@@ -1,36 +1,16 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import PropTypes from 'prop-types';
+import React from 'react';
 import CloseIcon from '@mui/icons-material/Close';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import GoogleIcon from '@mui/icons-material/Google';
 import AppleIcon from '@mui/icons-material/Apple';
 import EmailIcon from '@mui/icons-material/Email';
-import './styles.scss'
+import './styles.scss';
 
-const ModalContext = React.createContext()
-
-const Modal = ({ modal, unSetModal }) => {
-  useEffect(() => {
-    const bind = e => {
-      if (e.keyCode !== 27) {
-        return
-      }
-
-      if (document.activeElement && ['INPUT', 'SELECT'].includes(document.activeElement.tagName)) {
-        return
-      }
-
-      unSetModal()
-    }
-
-    document.addEventListener('keyup', bind)
-    return () => document.removeEventListener('keyup', bind)
-  }, [modal, unSetModal])
-
+const LoginFormModal = ({ onClose }) => {
   return (
     <div className='popup-container'>
       <div className='container'>
-        <div className='close-icon' onClick={unSetModal}>
+        <div className='close-icon' onClick={onClose}>
           <CloseIcon />
         </div>
         <div className='header'>
@@ -74,39 +54,7 @@ const Modal = ({ modal, unSetModal }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-const ModalProvider = props => {
-  const [modal, setModal] = useState()
-  const unSetModal = useCallback(() => {
-    setModal()
-  }, [setModal])
-
-  return (
-    <ModalContext.Provider value={{ unSetModal, setModal }} {...props} >
-      {props.children}
-      {modal && <Modal modal={modal} unSetModal={unSetModal} />}
-    </ModalContext.Provider>
-  )
-}
-
-const useModal = () => {
-  const context = React.useContext(ModalContext)
-  if (context === undefined) {
-    throw new Error('useModal must be used within a UserProvider')
-  }
-
-  return context
-}
-
-Modal.propTypes = {
-  modal: PropTypes.object.isRequired,
-  unSetModal: PropTypes.func.isRequired,
-}
-
-ModalProvider.propTypes = {
-  children: PropTypes.object.isRequired,
-}
-
-export { ModalProvider, useModal }
+export default LoginFormModal;
