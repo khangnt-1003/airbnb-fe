@@ -6,6 +6,7 @@ import MenuRoundedIcon from '@mui/icons-material/MenuRounded';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import { useModal } from '../../../LoginPage/components/LoginFormModal';
 import './styles.scss';
+import { Modal } from '@mui/material';
 
 function ProfileMenu() {
   const [menuAnchor, setMenuAnchor] = React.useState(null);
