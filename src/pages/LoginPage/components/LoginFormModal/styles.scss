@@ -70,6 +70,24 @@
   border-top-right-radius: 0;
 }
 
+.password-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem 0.5rem;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.username-input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  padding: 1rem 0.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .country-code-select {
   width: 100%;
   padding: 1rem 0.5rem;

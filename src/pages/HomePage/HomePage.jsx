@@ -6,29 +6,40 @@ import { list, list2 } from '../../assets/cards';
 import LoginForm from '../LoginPage/components/LoginForm';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function HomePage() {
-  const [selectedFilter, setSelectedFilter] = useState(0);
-  const { data } = useQuery({
+  const [selectedFilter, setSelectedFilter] = useState(0); 
+  const { data, error, isLoading } = useQuery({
     queryKey: ['list'],
     queryFn: async () => {
+      const accessToken = Cookies.get('accessToken');
+      // console.log('access token: ' + accessToken);
+
+      if (!accessToken) {
+        throw new Error('Access token is missing');
+      }
+
       return await axios
         .get('http://localhost:3000/stays', {
           headers: {
-            //tokem o day
+            Authorization: `Bearer ${accessToken}`,
           },
         })
-        .then((res) => {
-          console.log(res);
-          return res.data;
-        })
+        .then((res) => res.data)
         .catch((err) => {
-          console.log(err);
-
           throw err;
         });
     },
   });
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
   return (
     <div>
       <div
@@ -48,9 +59,9 @@ function HomePage() {
       </div>
 
       {selectedFilter == 0 ? (
-        <CardList list={list} />
+        <CardList list={data?data:[]} />
       ) : (
-        <CardList list={list2} />
+        <CardList list={data?data:[]} />
       )}
     </div>
   );

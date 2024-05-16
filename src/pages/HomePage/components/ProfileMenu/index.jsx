@@ -8,6 +8,7 @@ import LoginForm from '../../../LoginPage/components/LoginForm';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import LoginFormModal from './../../../LoginPage/components/LoginFormModal/index';
 import { useModal } from '../../../LoginPage/components/LoginFormModal/ModalContext';
+import { login } from '../../../../utils';
 
 function ProfileMenu() {
   const { data } = useQuery({
@@ -19,7 +20,7 @@ function ProfileMenu() {
         : await axios
             .get('http://localhost:3000/stays', {
               headers: {
-                //tokem o day
+                //token o day
               },
             })
             .then((res) => {
@@ -33,6 +34,7 @@ function ProfileMenu() {
             });
     },
   });
+
   const {showModal, closeModal} = useModal();
   const [menuAnchor, setMenuAnchor] = React.useState(null);
   const queryClient = useQueryClient();
