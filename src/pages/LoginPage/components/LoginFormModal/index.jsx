@@ -11,7 +11,14 @@ const LoginFormModal = ({ onClose }) => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const handleLogin = async () => {
-    await login(username, password);
+    const result = await login(username, password);
+    if (result.success) {
+      alert(result.message);
+      onClose();
+      window.location.reload();
+    } else {
+      alert(result.message);
+    }
   }
 
   return (

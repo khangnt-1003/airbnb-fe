@@ -11,29 +11,29 @@ import { useModal } from '../../../LoginPage/components/LoginFormModal/ModalCont
 import { login } from '../../../../utils';
 
 function ProfileMenu() {
-  const { data } = useQuery({
-    queryKey: ['list'],
-    queryFn: async () => {
-      const data = queryClient.getQueryData(['list']);
-      return data
-        ? data
-        : await axios
-            .get('http://localhost:3000/stays', {
-              headers: {
-                //token o day
-              },
-            })
-            .then((res) => {
-              console.log(res);
-              return res.data;
-            })
-            .catch((err) => {
-              console.log(err);
+  // const { data } = useQuery({
+  //   queryKey: ['list'],
+  //   queryFn: async () => {
+  //     const data = queryClient.getQueryData(['list']);
+  //     return data
+  //       ? data
+  //       : await axios
+  //           .get('http://localhost:3000/stays', {
+  //             headers: {
+  //               //token o day
+  //             },
+  //           })
+  //           .then((res) => {
+  //             console.log(res);
+  //             return res.data;
+  //           })
+  //           .catch((err) => {
+  //             console.log(err);
 
-              throw err;
-            });
-    },
-  });
+  //             throw err;
+  //           });
+  //   },
+  // });
 
   const {showModal, closeModal} = useModal();
   const [menuAnchor, setMenuAnchor] = React.useState(null);
@@ -80,7 +80,7 @@ function ProfileMenu() {
           className='menu-items'
           onClick={() => {
             handleCloseMenu();
-            LoginForm.show();
+            showModal(<LoginFormModal onClose={closeModal} />);
           }}
         >
           Signup
